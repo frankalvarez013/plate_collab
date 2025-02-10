@@ -30,7 +30,7 @@
     "moduleDetection": "force",
     "allowImportingTsExtensions": false,
     "resolveJsonModule": true,
-    "noEmit": true,
+    "noEmit": false,
     "incremental": true,
     "declaration": false,
     "declarationMap": false,

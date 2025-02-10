@@ -12,7 +12,6 @@ import {
   useEditorRef,
 } from '@udecode/plate/react';
 import { cva } from 'class-variance-authority';
-
 const editorContainerVariants = cva(
   'relative w-full cursor-text select-text overflow-y-auto caret-primary selection:bg-brand/25 focus-visible:outline-none [&_.slate-selection-area]:border [&_.slate-selection-area]:border-brand/25 [&_.slate-selection-area]:bg-brand/15',
   {

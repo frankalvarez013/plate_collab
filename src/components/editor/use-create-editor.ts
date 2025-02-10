@@ -55,7 +55,7 @@ import {
   TableRowPlugin,
 } from '@udecode/plate-table/react';
 import { TogglePlugin } from '@udecode/plate-toggle/react';
-
+import { YjsPlugin } from '@udecode/plate-yjs/react';
 import { copilotPlugins } from '@/components/editor/plugins/copilot-plugins';
 import { editorPlugins } from '@/components/editor/plugins/editor-plugins';
 import { FixedToolbarPlugin } from '@/components/editor/plugins/fixed-toolbar-plugin';
@@ -98,7 +98,7 @@ import { TableElement } from '@/components/plate-ui/table-element';
 import { TableRowElement } from '@/components/plate-ui/table-row-element';
 import { TocElement } from '@/components/plate-ui/toc-element';
 import { ToggleElement } from '@/components/plate-ui/toggle-element';
-
+import { RemoteCursorOverlay } from '../plate-ui/remote-cursor-overlay';
 export const useCreateEditor = () => {
   return usePlateEditor({
     override: {
@@ -156,6 +156,22 @@ export const useCreateEditor = () => {
       ...editorPlugins,
       FixedToolbarPlugin,
       FloatingToolbarPlugin,
+      YjsPlugin.configure({
+        render: {
+          afterEditable: RemoteCursorOverlay,
+        },
+        options: {
+          cursorOptions: {
+            autoSend: true,
+            data: { name: 'A plate user', color: '#5AC990' },
+          },
+          disableCursors: false,
+          hocuspocusProviderOptions: {
+            url: 'ws://localhost:1234/',
+            name: 'test',
+          },
+        },
+      }),
     ],
     value: [
       {
